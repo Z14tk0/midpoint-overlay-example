@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (C) 2014-2020 Evolveum
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd
+            http://cxf.apache.org/jaxrs
+            http://cxf.apache.org/schemas/jaxrs.xsd"
+        default-lazy-init="false">
+
+    <context:annotation-config/>
+    <context:component-scan base-package="com.example.midpoint.service"/>
+    <context:spring-configured/>
+
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+
+    <!--<bean id="exampleRestServiceClass" class="com.example.midpoint.service.ExampleRestService"/>-->
+    <bean id="scim2WebServiceClass" class="com.example.midpoint.service.Scim2WebService"/>
+
+    <jaxrs:server id="scim2WebService" address="/scim2">
+        <jaxrs:serviceBeans>
+            <ref bean="scim2WebServiceClass"/>
+        </jaxrs:serviceBeans>
+        <!--
+        Providers come still from midPoint, but in later versions they will be moved away.
+        They will have to be moved to overlay in future versions, but let's not worry now.
+        -->
+        <jaxrs:providers>
+            <ref bean="jaxbProvider"/>
+            <ref bean="jsonProvider"/>
+            <ref bean="yamlProvider"/>
+        </jaxrs:providers>
+
+        <jaxrs:outInterceptors>
+        </jaxrs:outInterceptors>
+    </jaxrs:server>
+
+
+    <!--<jaxrs:server id="exampleRestService" address="/rest-example/">-->
+    <!--    <jaxrs:serviceBeans>-->
+    <!--        <ref bean="exampleRestServiceClass"/>-->
+    <!--    </jaxrs:serviceBeans>-->
+    <!--    &lt;!&ndash;-->
+    <!--    Providers come still from midPoint, but in later versions they will be moved away.-->
+    <!--    They will have to be moved to overlay in future versions, but let's not worry now.-->
+    <!--    &ndash;&gt;-->
+    <!--    <jaxrs:providers>-->
+    <!--        <ref bean="jaxbProvider"/>-->
+    <!--        <ref bean="jsonProvider"/>-->
+    <!--        <ref bean="yamlProvider"/>-->
+    <!--    </jaxrs:providers>-->
+    <!--</jaxrs:server>-->
+
+</beans>

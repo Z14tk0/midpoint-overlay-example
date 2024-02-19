@@ -1,0 +1,36 @@
+= MidPoint Project Documentation
+Evolveum, s.r.o.
+Version 0.1, {localdate}
+:sectnums:
+:sectlinks:
+:toc: left
+:toclevels: 4
+:toc-title: Table of Contents
+:source-highlighter: highlightjs
+:highlightjs-languages: groovy, xml, json
+
+:imagesdir: ./img
+
+This is the optional preamble (an untitled section body).Useful for writing simple sectionless documents consisting only of a preamble.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

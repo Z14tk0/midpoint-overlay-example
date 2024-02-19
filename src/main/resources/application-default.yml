@@ -1,0 +1,8 @@
+midpoint:
+  additionalPackagesToScan: com.example.midpoint.gui.forms
+
+spring:
+  web:
+    resources:
+      chain:
+        cache: false
