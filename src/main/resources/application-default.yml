@@ -1,6 +1,7 @@
 midpoint:
   additionalPackagesToScan: com.example.midpoint.gui
 
+
 spring:
   web:
     resources:
