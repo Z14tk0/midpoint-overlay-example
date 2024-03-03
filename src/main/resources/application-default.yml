@@ -1,5 +1,5 @@
 midpoint:
-  additionalPackagesToScan: com.example.midpoint.gui
+  additionalPackagesToScan: com.example.midpoint.gui,com.example.midpoint.service
 
 
 spring:
